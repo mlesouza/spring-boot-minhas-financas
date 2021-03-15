@@ -19,6 +19,10 @@ import java.util.Optional;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UsuarioRepositoryTest {
 
+    public static String EMAIL = "usuario@email.com";
+    public static String NOME  = "Usuario";
+    public static String SENHA = "senha";
+
     @Autowired
     UsuarioRepository repository;
 
@@ -35,7 +39,7 @@ public class UsuarioRepositoryTest {
 
     @Test
     public void deveRetornarFalsoQuandoNaoHouverUsuarioCadastradoComOEmail() {
-        boolean resultado = repository.existsByEmail("usuario@email.com");
+        boolean resultado = repository.existsByEmail(EMAIL);
         Assertions.assertThat(resultado).isFalse();
     }
 
@@ -50,21 +54,21 @@ public class UsuarioRepositoryTest {
     public void deveBuscarUmUsuarioPorEmail() {
         Usuario usuario = criarUsuario();
         entityManager.persist(usuario);
-        Optional<Usuario> resultado = repository.findByEmail("usuario@email.com");
+        Optional<Usuario> resultado = repository.findByEmail(EMAIL);
         Assertions.assertThat(resultado.isPresent()).isTrue();
     }
 
     @Test
     public void deveRetornarVazioAoBuscarUsuarioPorEmailQuandoNaoExisteNaBase() {
-        Optional<Usuario> resultado = repository.findByEmail("usuario@email.com");
+        Optional<Usuario> resultado = repository.findByEmail(EMAIL);
         Assertions.assertThat(resultado.isPresent()).isFalse();
     }
 
     public static Usuario criarUsuario() {
         return Usuario.builder()
-                .nome("usuario")
-                .email("usuario@email.com")
-                .senha("senha")
+                .nome(NOME)
+                .email(EMAIL)
+                .senha(SENHA)
                 .build();
     }
 }
