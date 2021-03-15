@@ -1,21 +1,15 @@
 package com.mlesouza.springbootminhasfinancas.service;
 
-import com.mlesouza.springbootminhasfinancas.exception.RegraNegocioException;
-import com.mlesouza.springbootminhasfinancas.model.entity.Usuario;
 import com.mlesouza.springbootminhasfinancas.model.repository.UsuarioRepository;
 import com.mlesouza.springbootminhasfinancas.service.impl.UsuarioServiceImpl;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
